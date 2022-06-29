@@ -1,7 +1,7 @@
 import React from "react";
 
 const CardItem = (props: any) => {
-  const { movie } = props;
+  const { obj } = props;
   return (
     <div className="card_item style2">
       <a href={`/item-details-01`}>
@@ -9,8 +9,8 @@ const CardItem = (props: any) => {
           <div className="overlay"></div>
           <img src="" alt="Axies" />
           <div className="content">
-            <div className="fs-16">{movie.name}'s gallery</div>
-            <p className="description">{movie.description}</p>
+            <div className="fs-16">{obj.name}'s gallery</div>
+            <p className="description">{obj.description}</p>
           </div>
         </div>
       </a>
