@@ -1,14 +1,21 @@
 import CardItem from "./CardItem";
+import "./styles/layouts.css";
+import DiscoverMovie from "types/index";
 
-const GridCards = (props: any) => {
+interface GridCardsProps {
+  movies: DiscoverMovie.Movie[];
+  title: string;
+}
+
+const GridCards = (props: GridCardsProps) => {
   const { movies, title } = props;
 
   return (
-    <div className="row">
+    <div>
       <h2>{title}</h2>
       <div className="container-cards">
-        {movies.map((movie: any, index: number) => (
-          <CardItem key={index} movie={movie} />
+        {movies.map((movie: DiscoverMovie.Movie, index: number) => (
+          <CardItem key={index} obj={movie} />
         ))}
       </div>
     </div>

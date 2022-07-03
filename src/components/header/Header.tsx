@@ -1,5 +1,6 @@
 import { menu } from "pages/menu";
 import { Link } from "wouter";
+import "./styles/header.css";
 
 const Header = () => {
   return (
