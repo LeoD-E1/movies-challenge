@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-
-interface SearchProps {
-  handleChangeKey: (value: string) => void;
-}
+import { SearchProps } from "types";
 
 const SearchBar = (props: SearchProps) => {
   const { handleChangeKey } = props;

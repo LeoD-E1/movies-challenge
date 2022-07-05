@@ -1,11 +1,7 @@
 import React from "react";
 import "./styles/layouts.css";
-import DiscoverMovie from "types/index";
+import DiscoverMovie, { CardItemProps } from "types";
 import { Link } from "wouter";
-
-interface CardItemProps {
-  obj: DiscoverMovie.Movie;
-}
 
 const CardItem = (props: CardItemProps) => {
   const { obj } = props;

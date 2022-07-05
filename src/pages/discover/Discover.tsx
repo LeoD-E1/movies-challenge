@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer, useCallback } from "react";
+import { useState, useEffect, useReducer } from "react";
 import Header from "components/header/Header";
 import GridCards from "components/layouts/gridCards/GridCards";
 import { fetchData } from "services/fetchCaller";
@@ -6,81 +6,7 @@ import DiscoverMovie from "types/index";
 import SearchBar from "components/searchBar/SearchBar";
 import Rating from "components/rating/Rating";
 
-const SET_MOVIES = "SET_MOVIES";
-const UPDATE_RATING = "UPDATE_RATING";
-const SET_SEARCHED_MOVIES = "SET_SEARCHED_MOVIES";
-const UPDATE_KEYWORD = "UPDATE_KEYWORD";
-const IS_LOADING = "IS_LOADING";
-const IS_ERROR = "IS_ERROR";
-
-interface DiscoverType {
-  movies: DiscoverMovie.Movie[];
-  moviesSearched: DiscoverMovie.Movie[];
-  rating: number;
-  keyword: string;
-  isLoading: boolean;
-  isError: boolean;
-}
-
-type ActionDiscoverType =
-  | { type: "SET_MOVIES"; payload: { movies: DiscoverMovie.Movie[] } }
-  | { type: "SET_SEARCHED_MOVIES"; payload: { movies: DiscoverMovie.Movie[] } }
-  | { type: "UPDATE_RATING"; payload: { rating: number } }
-  | { type: "UPDATE_KEYWORD"; payload: { keyword: string } }
-  | { type: "IS_LOADING"; payload: { loading: boolean } }
-  | { type: "IS_ERROR"; payload: { error: boolean } };
-
-const initialState: DiscoverType = {
-  movies: [],
-  moviesSearched: [],
-  rating: 0,
-  keyword: "",
-  isLoading: false,
-  isError: false,
-};
-
-const discoverReducer = (
-  state: typeof initialState,
-  action: ActionDiscoverType
-): DiscoverType => {
-  switch (action.type) {
-    case SET_MOVIES:
-      return {
-        ...state,
-        movies: action.payload.movies,
-      };
-
-    case SET_SEARCHED_MOVIES:
-      return {
-        ...state,
-        moviesSearched: action.payload.movies,
-      };
-
-    case UPDATE_RATING:
-      return {
-        ...state,
-        rating: action.payload.rating,
-      };
-    case UPDATE_KEYWORD:
-      return {
-        ...state,
-        keyword: action.payload.keyword,
-      };
-    case IS_LOADING:
-      return {
-        ...state,
-        isLoading: action.payload.loading,
-      };
-    case IS_ERROR:
-      return {
-        ...state,
-        isError: action.payload.error,
-      };
-
-    default:
-      return state;
-  }
-};
+import { discoverReducer, initialState } from "./reducer/discoverReducer";
 
 const Discover = () => {
   const [discoverState, dispatch] = useReducer(discoverReducer, initialState);
@@ -132,7 +58,9 @@ const Discover = () => {
   }, []);
 
   useEffect(() => {
-    discoverMovies(rating * 2);
+    if (rating !== 0) {
+      discoverMovies(rating * 2);
+    }
   }, [rating]);
 
   return (

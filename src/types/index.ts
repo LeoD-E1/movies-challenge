@@ -1,10 +1,25 @@
-export interface Movie {}
 export interface Link {
   id: number;
   name: String;
   link: String;
   subLinks?: Link[];
 }
+
+export interface FetchDataProps {
+  endpoint: string;
+  query?: string;
+  popularity?: "desc" | "asc";
+  rating?: number;
+}
+
+export type ActionDiscoverType =
+  | { type: "SET_MOVIES"; payload: { movies: DiscoverMovie.Movie[] } }
+  | { type: "SET_SEARCHED_MOVIES"; payload: { movies: DiscoverMovie.Movie[] } }
+  | { type: "UPDATE_RATING"; payload: { rating: number } }
+  | { type: "UPDATE_KEYWORD"; payload: { keyword: string } }
+  | { type: "IS_LOADING"; payload: { loading: boolean } }
+  | { type: "IS_ERROR"; payload: { error: boolean } };
+
 declare module DiscoverMovie {
   interface Movie {
     adult: boolean;
@@ -28,6 +43,28 @@ declare module DiscoverMovie {
     total_pages: number;
     total_results: number;
   }
+}
+
+export interface DiscoverType {
+  movies: DiscoverMovie.Movie[];
+  moviesSearched: DiscoverMovie.Movie[];
+  rating: number;
+  keyword: string;
+  isLoading: boolean;
+  isError: boolean;
+}
+
+export interface RatingProps {
+  rating: number;
+  setRating: (value: number) => void;
+}
+
+export interface CardItemProps {
+  obj: DiscoverMovie.Movie;
+}
+
+export interface SearchProps {
+  handleChangeKey: (value: string) => void;
 }
 
 export default DiscoverMovie;

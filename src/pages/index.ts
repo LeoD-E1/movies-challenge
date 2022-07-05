@@ -1,10 +1,11 @@
 import Home from "./Home";
-import Discover from "./Discover";
+import Discover from "./discover/Discover";
+import MovieDetail from "./movieDetail/MovieDetail";
 
 const routes = [
   { path: "/", component: Home },
   { path: "/discover", component: Discover },
-  // { path: "/movie/:id", component: Movie}
+  { path: "/movie/:id", component: MovieDetail },
 ];
 
 export default routes;

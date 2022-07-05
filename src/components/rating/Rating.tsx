@@ -1,9 +1,5 @@
 import "./styles/rating.css";
-
-interface RatingProps {
-  rating: number;
-  setRating: (value: number) => void;
-}
+import { RatingProps } from "types";
 
 const Rating = (props: RatingProps) => {
   const { rating, setRating } = props;
@@ -17,8 +13,15 @@ const Rating = (props: RatingProps) => {
             <button
               type="button"
               key={index}
-              className={index <= rating ? "on" : "off"}
-              onClick={() => setRating(index)}
+              className={`star ${index <= rating ? "on" : "off"}`}
+              onClick={() => {
+                if (rating === index) {
+                  setRating(0);
+                  window.location.reload();
+                } else {
+                  setRating(index);
+                }
+              }}
             >
               <span className="star">&#9733;</span>
             </button>

@@ -1,13 +1,8 @@
+import { FetchDataProps } from "types";
+
 const { REACT_APP_API_KEY, REACT_APP_BASE_URL } = process.env;
 
-interface fetchDataProps {
-  endpoint: string;
-  query?: string;
-  popularity?: "desc" | "asc";
-  rating?: number;
-}
-
-export const fetchData = async (props: fetchDataProps) => {
+export const fetchData = async (props: FetchDataProps) => {
   const { endpoint, query, popularity = "desc", rating } = props;
   const keyword = query ? `&query=${query}` : "";
   const average = rating
