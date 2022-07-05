@@ -11,7 +11,7 @@ const CardItem = (props: CardItemProps) => {
   const { obj } = props;
   return (
     <div className="card_item">
-      <Link href={`/item-details-01`}>
+      <Link href={`/movie/${obj.id}`}>
         <div className="inner-card">
           <div className="overlay"></div>
           <img

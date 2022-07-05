@@ -1,0 +1,26 @@
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 3rem;
+} 
+
+.rating .star{
+  width: 30px;
+  height: 30px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #000;
+}
+.off {
+  color: #ccc;
+}
+
