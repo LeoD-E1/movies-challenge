@@ -1,4 +1,5 @@
 import { SearchProps } from "types";
+import "./styles/searchBar.css";
 
 const SearchBar = (props: SearchProps) => {
   const { handleChangeKey } = props;
@@ -9,9 +10,12 @@ const SearchBar = (props: SearchProps) => {
 
   return (
     <>
-      <form>
-        <input type="search" placeholder="Search" onChange={handleChange} />
-      </form>
+      <input
+        onChange={handleChange}
+        type="search"
+        className="input-search"
+        placeholder="Type to Search..."
+      />
     </>
   );
 };

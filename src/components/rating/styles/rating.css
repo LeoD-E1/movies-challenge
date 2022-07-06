@@ -4,19 +4,13 @@
   justify-content: center;
   gap: 10px;
   margin-top: 3rem;
-} 
-
-.rating .star{
-  width: 30px;
-  height: 30px;
+  background-color: red;
 }
 
-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
+.star-btn:hover {
   cursor: pointer;
 }
+
 .on {
   color: #000;
 }

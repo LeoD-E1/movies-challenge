@@ -6,10 +6,14 @@ export interface Link {
 }
 
 export interface FetchDataProps {
-  endpoint: string;
+  endpoint: {
+    type: "DISCOVER" | "SEARCH" | "DISCOVER-RATING" | "MOVIE";
+    value: string;
+  };
   query?: string;
   popularity?: "desc" | "asc";
   rating?: number;
+  id?: string;
 }
 
 export type ActionDiscoverType =

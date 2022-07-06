@@ -10,10 +10,9 @@ const Rating = (props: RatingProps) => {
         {[...Array(5)].map((star, index) => {
           index++;
           return (
-            <button
-              type="button"
+            <h1
               key={index}
-              className={`star ${index <= rating ? "on" : "off"}`}
+              className={`star-btn ${index <= rating ? "on" : "off"}`}
               onClick={() => {
                 if (rating === index) {
                   setRating(0);
@@ -24,7 +23,7 @@ const Rating = (props: RatingProps) => {
               }}
             >
               <span className="star">&#9733;</span>
-            </button>
+            </h1>
           );
         })}
       </div>

@@ -21,10 +21,13 @@ const Discover = () => {
     try {
       if (rating === 0) {
         data = await fetchData({
-          endpoint: "discover/movie",
+          endpoint: { type: "DISCOVER", value: "discover/movie" },
         });
       } else {
-        data = await fetchData({ endpoint: "discover/movie", rating: num });
+        data = await fetchData({
+          endpoint: { type: "DISCOVER-RATING", value: "discover/movie" },
+          rating: num,
+        });
       }
       dispatch({ type: "SET_MOVIES", payload: { movies: data.results } });
     } catch (error) {
@@ -39,7 +42,7 @@ const Discover = () => {
     if (key.length) {
       try {
         const data: DiscoverMovie.Response = await fetchData({
-          endpoint: "search/movie",
+          endpoint: { type: "SEARCH", value: "search/movie" },
           query: key,
         });
         dispatch({

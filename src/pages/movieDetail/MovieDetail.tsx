@@ -7,20 +7,23 @@ const MovieDetail = (props: MovieDetailParams) => {
 
   const [movie, setMovie] = useState<MovieDetailProps.Movie>();
 
-  // const RetrieveItem = async (id: string) => {
-  //   const data: MovieDetailProps.Movie = await fetchData({
-  //     endpoint: `movie/${id}`,
-  //   });
-  //   setMovie(data);
-  // };
+  const RetrieveItem = async (id: string) => {
+    const data: MovieDetailProps.Movie = await fetchData({
+      endpoint: {
+        type: "MOVIE",
+        value: `movie/${id}`,
+      },
+    });
+    setMovie(data);
+  };
 
   useEffect(() => {
-    // RetrieveItem(params.id);
+    RetrieveItem(params.id);
   }, [params.id]);
 
   return (
     <>
-      <div>{movie?.imdb_id}</div>
+      <img src={movie?.poster_path} alt="" />
     </>
   );
 };

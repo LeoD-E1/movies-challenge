@@ -5,6 +5,7 @@ import { Link } from "wouter";
 
 const CardItem = (props: CardItemProps) => {
   const { obj } = props;
+  const limit = 75;
   return (
     <div className="card_item">
       <Link href={`/movie/${obj.id}`}>
@@ -12,8 +13,9 @@ const CardItem = (props: CardItemProps) => {
           <div className="overlay"></div>
           <img src={obj.poster_path} alt={`${obj.title} movie`} />
           <div className="content">
-            <div className="fs-16">{obj.title}</div>
-            <p className="description">{obj.overview}</p>
+            <p className="description">
+              {obj.overview.slice(0, limit) + "..."}
+            </p>
           </div>
         </div>
       </Link>
