@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "components/header/Header";
+import GridCards from "components/layouts/gridCards/GridCards";
 
 const Home = () => {
   return (
     <div>
       <Header />
-      <h1>Home</h1>
+      <GridCards title="Discover" movies={[]} />
     </div>
   );
 };

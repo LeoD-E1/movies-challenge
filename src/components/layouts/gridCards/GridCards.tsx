@@ -13,11 +13,15 @@ const GridCards = (props: GridCardsProps) => {
   return (
     <div>
       <h2>{title}</h2>
-      <div className="container-cards">
-        {movies.map((movie: DiscoverMovie.Movie, index: number) => (
-          <CardItem key={index} obj={movie} />
-        ))}
-      </div>
+      {movies.length ? (
+        <div className="container-cards">
+          {movies.map((movie: DiscoverMovie.Movie, index: number) => (
+            <CardItem key={index} obj={movie} />
+          ))}
+        </div>
+      ) : (
+        <p> There are no movies to show! </p>
+      )}
     </div>
   );
 };
